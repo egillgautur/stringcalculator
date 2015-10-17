@@ -10,7 +10,7 @@ public class Calculator {
 			return sum(splitNumbers(text));
 		}
 		else
-			return 1;
+			return Integer.parseInt(text);
 	}
 
 	private static int toInt(String number){
