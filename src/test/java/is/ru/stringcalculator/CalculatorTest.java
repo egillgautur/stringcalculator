@@ -47,4 +47,9 @@ public class CalculatorTest {
     public void testNegative(){
     	Calculator.add("-1,2");
     }
+
+    @Test
+	public void testToLargeNumber() {
+		assertEquals(2, Calculator.add("1001,2"));
+	}
 }
