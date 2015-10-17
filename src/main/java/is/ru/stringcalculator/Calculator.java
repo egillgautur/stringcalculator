@@ -11,12 +11,6 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		/*else if(text.contains(",")){
-			return sum(splitNumbers(text));
-		}
-		else if(text.contains("\n")){
-			return sum(splitNumbers(text));
-		}*/
 		else{
 			String[] numbers = size(text);
 
