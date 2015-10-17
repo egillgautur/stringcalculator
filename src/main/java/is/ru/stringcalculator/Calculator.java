@@ -11,6 +11,27 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("//[")){
+			String temp = "";
+
+			for(int i = 0 ; i < text.length() ; i++){
+				if(at(text, i) != '/' && at(text, i) != '['){
+					temp += at(text, i);
+				}
+			}
+
+			String temp2 = temp.substring(0, temp.indexOf(']'));
+			String delim = "";
+
+			for(int i = 0 ; i < temp2.length() ; i++){
+				delim += "\\" + at(temp2, i);
+			}
+
+			delim = "(" + delim + ")";
+			String numbers = temp.substring(temp.indexOf(']') + 2, temp.length());
+			
+			return sum(splitNumbers2(numbers, delim));
+		}
 		else{
 			String[] numbers = size(text);
 
@@ -28,7 +49,11 @@ public class Calculator {
 	private static String[] splitNumbers(String numbers){
 	    return numbers.split(",|\n");
 	}
-      
+    
+    private static String[] splitNumbers2(String numbers, String numbers2){
+	    return numbers.split(numbers2);
+	}  
+
     private static int sum(String[] numbers){
  	    int total = 0;
         for(String number : numbers){
@@ -64,6 +89,10 @@ public class Calculator {
 			return customDelimeter(text);
 		else
 			return splitNumbers(text);
+	}
+
+	private static char at(String s, int iter) {
+		return s.charAt(iter);
 	}
 }
 
